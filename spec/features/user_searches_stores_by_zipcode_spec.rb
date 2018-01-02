@@ -6,8 +6,8 @@ describe "User searches stores by zipcode" do
     # When I visit "/"
     visit '/'
     # And I fill in a search box with "80202" and click "search"
-    fill_in "", with: "80202"
-    click_on "search"
+    fill_in "zipcode", with: "80202"
+    click_on "Search"
     # Then my current path should be "/search" (ignoring params)
     expect(current_path).to eq('/search')
     # And I should see stores within 25 miles of 80202
