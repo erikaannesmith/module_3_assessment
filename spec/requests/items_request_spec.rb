@@ -38,12 +38,18 @@ describe "Items request" do
   end
 
   it "Can create an item" do
-    post "/api/v1/items", {name: "Item 1",
-                           description: "Item 1 thingy things",
+    post "/api/v1/items", :params => {name: "Item 1",
+                           description: "Item 1 things",
                            image_url: "www.example.com"}
 
-    expect(response).to be_success
-    
+    expect(response.status).to eq(201) 
+    item = JSON.parse(response.body)
+
+    expect(item["name"]).to eq("Item 1")
+    expect(item["description"]).to eq("Item 1 things")
+    expect(item["image_url"]).to eq("www.example.com")
+    expect(item["created_at"]).to be_nil
+    expect(item["updated_at"]).to be_nil
   end
 
   it "Can delete an item" do

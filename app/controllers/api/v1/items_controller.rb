@@ -17,17 +17,17 @@ class Api::V1::ItemsController < ActionController::API
 
   def create
     item = Item.create(item_params)
-    if item.save!
-      render json: Item.find(params[item.id]), status: 201
+    if item.save
+      render json: Item.find_by(name: params['name']), status: 201
+    else
+      render json: {message: "Couldn't create item"}
     end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :image_url)
+    params.permit(:name, :description, :image_url)
   end
-
-
 
 end
