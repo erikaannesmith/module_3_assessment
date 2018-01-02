@@ -10,9 +10,13 @@ class Store
   end
 
   def self.all_by_zipcode(zip)
-    best_buy_service.all_by_zipcode(zip).map do |raw_store|
+    best_buy_service.all_by_zipcode(zip)[:stores].map do |raw_store|
       Store.new(raw_store)
     end
+  end
+
+  def self.total_stores(zip)
+    best_buy_service.all_by_zipcode(zip)[:total]
   end
 
   private
@@ -20,5 +24,5 @@ class Store
   def self.best_buy_service
     @best_buy_service ||= BestBuyService.new
   end
-  
+
 end

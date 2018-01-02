@@ -9,7 +9,7 @@ describe "User searches stores by zipcode" do
 
     expect(current_path).to eq('/search')
     expect(page).to have_content("17 Total Stores")
-    expect(page).to have_css(".store", count: 17)
+    expect(page).to have_css(".store", count: 10)
 
     within(first(".store")) do
       expect(page).to have_css('.name')
