@@ -37,12 +37,19 @@ describe "Items request" do
     expect(item["updated_at"]).to be_nil  
   end
 
-  xit "Can create an item" do
+  it "Can create an item" do
+    post "/api/v1/items", {name: "Item 1",
+                           description: "Item 1 thingy things",
+                           image_url: "www.example.com"}
 
+    expect(response).to be_success
+    
   end
 
-  xit "Can delete an item" do
+  it "Can delete an item" do
+    delete "/api/v1/items/#{@items.first.id}"
 
+    expect(response.status).to eq(204)
   end
 
 end
