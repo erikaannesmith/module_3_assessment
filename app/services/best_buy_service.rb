@@ -7,7 +7,7 @@ class BestBuyService
   end
 
   def all_by_zipcode(zip)
-    get_json("/v1/stores(area(80203,25))?format=json&show=storeId,storeType,name&apiKey=ru99w3xp6qu5848qvbgrznxq")
+    get_json("/v1/stores(area(80203,25))?format=json&show=storeType,name,city,distance,phone&pageSize=25&apiKey=ru99w3xp6qu5848qvbgrznxq")[:stores]
   end
 
   def get_json(url)
