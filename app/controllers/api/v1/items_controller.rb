@@ -4,5 +4,10 @@ class Api::V1::ItemsController < ActionController::API
     render json: Item.all
   end
 
+  def show
+    item = Item.find(params[:id])
+    render json: item
+  end
+
 
 end

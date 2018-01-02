@@ -22,8 +22,19 @@ describe "Items request" do
     expect(items.first["updated_at"]).to be_nil    
   end
 
-  xit "Can return json for one item" do
+  it "Can return json for one item" do
+    get "/api/v1/items/#{@items.first.id}"
 
+    expect(response).to be_success
+
+    item = JSON.parse(response.body)
+
+    expect(item["id"]).to eq(@items.first.id)
+    expect(item["name"]).to eq(@items.first.name)
+    expect(item["description"]).to eq(@items.first.description)
+    expect(item["image_url"]).to eq(@items.first.image_url)
+    expect(item["created_at"]).to be_nil
+    expect(item["updated_at"]).to be_nil  
   end
 
   xit "Can create an item" do
