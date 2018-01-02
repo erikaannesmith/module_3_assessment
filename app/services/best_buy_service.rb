@@ -7,8 +7,10 @@ class BestBuyService
   end
 
   def all_by_zipcode(zip)
-    get_json("/v1/stores(area(80203,25))?format=json&show=storeType,name,city,distance,phone&pageSize=25&apiKey=ru99w3xp6qu5848qvbgrznxq")[:stores]
+    get_json("/v1/stores(area(#{zip},25))?format=json&show=storeType,name,city,distance,phone&pageSize=25&apiKey=#{ENV['BEST_BUY_KEY']}")[:stores]
   end
+
+  private
 
   def get_json(url)
     response = @conn.get(url)

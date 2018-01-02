@@ -20,4 +20,5 @@ class Store
   def self.best_buy_service
     @best_buy_service ||= BestBuyService.new
   end
+  
 end
