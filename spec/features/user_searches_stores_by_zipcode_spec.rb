@@ -6,7 +6,7 @@ describe "User searches stores by zipcode" do
     # When I visit "/"
     visit '/'
     # And I fill in a search box with "80202" and click "search"
-    fill_in "q", with: "80202"
+    fill_in "", with: "80202"
     click_on "search"
     # Then my current path should be "/search" (ignoring params)
     expect(current_path).to eq('/search')

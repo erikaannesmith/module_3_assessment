@@ -7,6 +7,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <%= form_tag :search, method: :get do %>
+        <%= text_field_tag :zipcode, "Enter Zipcode" %>
+        <%= submit_tag "Search" %>
+    <% end %>
     <%= render 'layouts/navbar' %>
     <% flash.each do |type, msg|  %>
       <%= msg %>
