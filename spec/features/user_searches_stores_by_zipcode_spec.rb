@@ -21,7 +21,7 @@ describe "User searches stores by zipcode" do
       expect(page).to have_css('.city')
       expect(page).to have_css('.distance')
       expect(page).to have_css('.phone')
-      expect(page).to have_css('.store_type')
+      expect(page).to have_css('.store-type')
     end
   end
 end
